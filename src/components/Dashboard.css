@@ -1,0 +1,309 @@
+/* src/components/Dashboard.css */
+
+.dashboard-container {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  background-color: #f0f2f5;
+  padding: 1rem;
+}
+
+.dashboard-card {
+  background-color: #ffffff;
+  border-radius: 8px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  padding: 1.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.dashboard-header {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  margin-bottom: 1.5rem;
+}
+
+.logo-container {
+  display: flex;
+  align-items: center;
+  margin-bottom: 1rem;
+  justify-content: flex-start;
+}
+
+.main-logo {
+  max-width: 100px;
+  height: auto;
+  margin-right: 0.5rem;
+}
+
+.second-logo {
+  max-width: 100px;
+  height: auto;
+}
+
+.dashboard-title {
+  color: #2f3594;
+  font-size: 1.8rem;
+  margin: 0 0 1rem 0;
+}
+
+.user-info {
+  color: #5f6368;
+  font-size: 0.9rem;
+}
+
+.total-points {
+  font-size: 1.3rem;
+  color: #2f3594;
+  margin-bottom: 1rem;
+}
+
+.success-message,
+.error-message {
+  padding: 0.8rem;
+  margin-bottom: 1rem;
+  border-radius: 4px;
+  font-size: 0.9rem;
+}
+
+.success-message {
+  background-color: #e6f4ea;
+  border-left: 4px solid #34a853;
+  color: #34a853;
+}
+
+.error-message {
+  background-color: #fef0f0;
+  border-left: 4px solid #d93025;
+  color: #d93025;
+}
+
+.scanned-products {
+  margin-top: 1.5rem;
+}
+
+.scanned-products h2 {
+  color: #2f3594;
+  margin-bottom: 1rem;
+  font-size: 1.2rem;
+}
+
+.table-container {
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+.product-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.9rem;
+}
+
+.product-table th,
+.product-table td {
+  text-align: left;
+  padding: 0.8rem;
+  border-bottom: 1px solid #dadce0;
+}
+
+.product-table th {
+  background-color: #e8f0fe;
+  color: #2f3594;
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+.product-table tr:hover {
+  background-color: #f8f9fa;
+}
+
+.no-products {
+  text-align: center;
+  color: #5f6368;
+  padding: 1rem;
+  background-color: #f8f9fa;
+  border-radius: 4px;
+  font-size: 0.9rem;
+}
+
+.action-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.8rem;
+  margin-top: 1.5rem;
+}
+
+.action-button {
+  background-color: #2f3594;
+  color: #ffffff;
+  border: none;
+  border-radius: 4px;
+  padding: 0.6rem 1rem;
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  text-decoration: none;
+  text-align: center;
+  flex: 1 0 calc(50% - 0.4rem);
+}
+
+.action-button:hover {
+  background-color: #1557b0;
+}
+
+.logout-button {
+  background-color: #d93025;
+}
+
+.logout-button:hover {
+  background-color: #b3261e;
+}
+
+@media (max-width: 768px) {
+  .product-table {
+    border: 0;
+  }
+  
+  .product-table thead {
+    display: none;
+  }
+  
+  .product-table tr {
+    margin-bottom: 10px;
+    display: block;
+    border-bottom: 2px solid #ddd;
+  }
+  
+  .product-table td {
+    display: block;
+    text-align: right;
+    padding-left: 50%;
+    position: relative;
+    border-bottom: 1px solid #eee;
+  }
+  
+  .product-table td:before {
+    content: attr(data-label);
+    position: absolute;
+    left: 6px;
+    width: 45%;
+    padding-right: 10px;
+    white-space: nowrap;
+    text-align: left;
+    font-weight: bold;
+  }
+}
+
+/* Add these styles to your Dashboard.css file */
+
+.manual-serial-form {
+  margin-top: 1.5rem;
+  padding: 1rem;
+  background-color: #f8f9fa;
+  border-radius: 4px;
+}
+
+.manual-serial-form h2 {
+  color: #2f3594;
+  margin-bottom: 1rem;
+  font-size: 1.2rem;
+}
+
+.manual-serial-form form {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.manual-serial-form input[type="text"] {
+  flex-grow: 1;
+  padding: 0.5rem;
+  border: 1px solid #dadce0;
+  border-radius: 4px;
+  font-size: 0.9rem;
+}
+
+.manual-serial-form button {
+  background-color: #2f3594;
+  color: #ffffff;
+  border: none;
+  border-radius: 4px;
+  padding: 0.5rem 1rem;
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.manual-serial-form button:hover {
+  background-color: #1557b0;
+}
+
+@media (min-width: 769px) {
+  .dashboard-container {
+    padding: 2rem;
+  }
+
+  .dashboard-card {
+    padding: 2rem;
+  }
+
+  .dashboard-header {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .logo-container {
+    margin-bottom: 0;
+  }
+
+  .main-logo {
+    max-width: 150px;
+    margin-right: 1rem;
+  }
+
+  .second-logo {
+    max-width: 75px;
+  }
+
+  .dashboard-title {
+    font-size: 2rem;
+    margin: 0;
+  }
+
+  .user-info {
+    font-size: 1rem;
+  }
+
+  .total-points {
+    font-size: 1.5rem;
+  }
+
+  .success-message,
+  .error-message {
+    padding: 1rem;
+    font-size: 1rem;
+  }
+
+  .scanned-products h2 {
+    font-size: 1.5rem;
+  }
+
+  .product-table {
+    font-size: 1rem;
+  }
+
+  .product-table th,
+  .product-table td {
+    padding: 1rem;
+  }
+
+  .no-products {
+    font-size: 1rem;
+  }
+
+  .action-button {
+    padding: 0.75rem 1rem;
+    font-size: 1rem;
+    flex: 0 1 auto;
+  }
+}

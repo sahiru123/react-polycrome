@@ -1,0 +1,99 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap');
+
+.landing-page {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  font-family: 'Poppins', sans-serif;
+  background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+}
+
+.landing-page header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px;
+  background-color: rgba(255, 255, 255, 0.8);
+  backdrop-filter: blur(10px);
+  box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+}
+
+.landing-page .logo {
+  height: 60px;
+  object-fit: contain;
+}
+
+.landing-page main {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 40px 20px;
+  text-align: center;
+}
+
+.landing-page h1 {
+  font-size: 2.5rem;
+  font-weight: 600;
+  color: #2c3494;
+  margin-bottom: 2rem;
+  max-width: 800px;
+  text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
+}
+
+.landing-page .button-container {
+  display: flex;
+  gap: 20px;
+}
+
+.landing-page button {
+  padding: 12px 24px;
+  font-size: 1rem;
+  font-weight: 400;
+  color: white;
+  background-color: #2c3494;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 6px rgba(44, 52, 148, 0.2);
+}
+
+.landing-page button:hover {
+  background-color: #232a75;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 8px rgba(44, 52, 148, 0.3);
+}
+
+.landing-page button:active {
+  transform: translateY(0);
+  box-shadow: 0 2px 4px rgba(44, 52, 148, 0.2);
+}
+
+@media (max-width: 768px) {
+  .landing-page header {
+    flex-direction: row;
+    justify-content: center;
+    gap: 20px;
+    padding: 10px;
+  }
+
+  .landing-page .logo {
+    height: 40px;
+  }
+
+  .landing-page h1 {
+    font-size: 1.8rem;
+  }
+
+  .landing-page .button-container {
+    flex-direction: column;
+    width: 100%;
+    max-width: 300px;
+  }
+
+  .landing-page button {
+    width: 100%;
+  }
+}
