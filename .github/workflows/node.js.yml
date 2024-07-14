@@ -35,8 +35,5 @@ jobs:
           git pull origin main
           npm install react-qr-reader@latest --force
           npm install --save-dev @babel/plugin-proposal-private-property-in-object --force
-          npm ci --force
           CI=false npm run build
-          rm -rf /var/www/html/*
-          cp -r build/* /var/www/html/
           sudo systemctl restart nginx
