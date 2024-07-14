@@ -17,8 +17,9 @@ jobs:
     
     - name: Install dependencies
       run: |
-        npm install --save-dev @babel/plugin-proposal-private-property-in-object
-        npm ci --legacy-peer-deps
+        npm install react-qr-reader@latest --force
+        npm install --save-dev @babel/plugin-proposal-private-property-in-object --force
+        npm ci --force
     
     - name: Build
       run: CI=false npm run build
@@ -32,8 +33,9 @@ jobs:
         script: |
           cd /var/www/react-polycrome
           git pull origin main
-          npm install --save-dev @babel/plugin-proposal-private-property-in-object
-          npm ci --legacy-peer-deps
+          npm install react-qr-reader@latest --force
+          npm install --save-dev @babel/plugin-proposal-private-property-in-object --force
+          npm ci --force
           CI=false npm run build
           rm -rf /var/www/html/*
           cp -r build/* /var/www/html/
