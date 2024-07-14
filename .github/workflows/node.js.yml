@@ -24,7 +24,7 @@ jobs:
         key: ${{ secrets.SSH_PRIVATE_KEY }}
         script: |
           cd /var/www/react-polycrome
-          git pull origin main
+          git pull origin master
           sudo chown -R $USER:$USER .
           CI=false npm run build
           sudo systemctl restart nginx
