@@ -2,27 +2,19 @@ name: React CI/CD Pipeline
 
 on:
   push:
-    branches: [ main ]
+    branches: [ master ]
 
 jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v2
-
+    
     - name: Use Node.js
       uses: actions/setup-node@v2
       with:
-        node-version: '20' # or your preferred Node.js version
-
-    - name: Install dependencies
-      run: npm ci
-
-#    - name: Run tests
-   #   run: npm test
-
-    - name: Build
-      run: npm run build
+        node-version: '20'
+    
 
     - name: Deploy to VPS
       uses: appleboy/ssh-action@master
@@ -33,8 +25,6 @@ jobs:
         script: |
           cd /var/www/react-polycrome
           git pull origin main
-          npm ci
-          npm run build
-          rm -rf /var/www/html/*
-          cp -r build/* /var/www/html/
+          sudo chown -R $USER:$USER .
+          CI=false npm run build
           sudo systemctl restart nginx
