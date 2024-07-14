@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const API_URL = 'http://localhost:3001';
+const API_URL = 'https://loyalty.polycrome.com';
 
 const api = axios.create({
   baseURL: API_URL,
@@ -52,10 +52,10 @@ export const login = async (nicNumber, password) => {
   }
 };
 
-export const getDashboard = () => api.get('/dashboard');
 export const processItemCode = (serialNumber) => api.post('/api/process-item', { serialNumber });
-export const scanQR = (serialNumber) => api.post('/scan', { serialNumber });
-export const requestPayout = () => api.post('/payout');
+export const getDashboard = () => api.get('/api/dashboard');
+export const scanQR = (serialNumber) => api.post('/api/scan', { serialNumber });
+export const requestPayout = () => api.post('/api/payout');
 
 export const checkAuth = async () => {
   const token = localStorage.getItem('token');

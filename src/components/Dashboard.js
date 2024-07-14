@@ -98,6 +98,14 @@ const Dashboard = ({ setIsAuthenticated }) => {
             <p>NIC: {userData.nicNumber}</p>
           </div>
         </div>
+
+        <div className="action-buttons">
+          <Link to="/scan" className="action-button">Scan QR Code</Link>
+          {userData.totalPoints >= 1000 && <Link to="/payout" className="action-button">Request Payout</Link>}
+          {userData.isAdmin && <Link to="/admin" className="action-button">Admin Dashboard</Link>}
+          <button onClick={handleLogout} className="action-button logout-button">Logout</button>
+        </div>
+
         {statusMessage.text && (
           <div className={`status-message ${statusMessage.type}`}>
             {statusMessage.text}
@@ -128,7 +136,7 @@ const Dashboard = ({ setIsAuthenticated }) => {
                 <thead>
                   <tr>
                     <th>Product Name</th>
-                    <th>Item Code</th>
+                    <th>Product Code</th>
                     <th>Serial Number</th>
                     <th>Points</th>
                     <th>Scanned At</th>
@@ -150,12 +158,6 @@ const Dashboard = ({ setIsAuthenticated }) => {
           ) : (
             <p className="no-products">No scanned products yet</p>
           )}
-        </div>
-        <div className="action-buttons">
-          <Link to="/scan" className="action-button">Scan QR Code</Link>
-          {userData.totalPoints >= 1000 && <Link to="/payout" className="action-button">Request Payout</Link>}
-          {userData.isAdmin && <Link to="/admin" className="action-button">Admin Dashboard</Link>}
-          <button onClick={handleLogout} className="action-button logout-button">Logout</button>
         </div>
       </div>
     </div>

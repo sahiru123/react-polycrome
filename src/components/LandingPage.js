@@ -15,7 +15,7 @@ const LandingPage = () => {
         <img src={secondLogo} alt="Polycrome Second Logo" className="logo" />
       </header>
       <main>
-        <h1>Polycrome Electrician Loyalty Scheme</h1>
+        <h1>Polycrome Electrician Loyalty Management System</h1>
         <div className="button-container">
           <button onClick={() => navigate('/login')}>Sign In</button>
           <button onClick={() => navigate('/register')}>Register</button>

@@ -1,0 +1,140 @@
+.qr-scanner-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    padding: 2rem;
+    background-color: #f0f0f0;
+    font-family: 'Arial', sans-serif;
+    box-sizing: border-box;
+  }
+  
+  .scanner-header {
+    text-align: center;
+    margin-bottom: 2rem;
+    width: 100%;
+    max-width: 600px;
+  }
+  
+  .scanner-header h1 {
+    color: #333;
+    font-size: 2rem;
+    margin-bottom: 1rem;
+  }
+  
+  .scanner-header p {
+    color: #666;
+    font-size: 1rem;
+  }
+  
+  .scanner-body {
+    position: relative;
+    width: 100%;
+    max-width: 500px;
+    height: 0;
+    padding-bottom: 100%; /* This creates a responsive square */
+    overflow: hidden;
+    border-radius: 20px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+  }
+  
+  .qr-reader {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+  }
+  
+  .scanner-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .scan-region-highlight {
+    width: 80%;
+    height: 80%;
+    border: 2px solid #fff;
+    border-radius: 20px;
+    box-shadow: 0 0 0 9999px rgba(0, 0, 0, 0.5);
+  }
+  
+  .scanner-animation {
+    position: absolute;
+    width: 80%;
+    height: 2px;
+    background-color: #00ff00;
+    animation: scan 2s linear infinite;
+  }
+  
+  @keyframes scan {
+    0% {
+      transform: translateY(-40%);
+    }
+    50% {
+      transform: translateY(40%);
+    }
+    100% {
+      transform: translateY(-40%);
+    }
+  }
+  
+  .scanner-footer {
+    margin-top: 2rem;
+    text-align: center;
+    width: 100%;
+    max-width: 600px;
+  }
+  
+  .scanning-status, .scanning-result {
+    font-size: 1.125rem;
+    font-weight: bold;
+  }
+  
+  .scanning-status {
+    color: #007bff;
+  }
+  
+  .scanning-result {
+    color: #28a745;
+  }
+  
+  @media (min-width: 768px) {
+    .scanner-header h1 {
+      font-size: 2.5rem;
+    }
+  
+    .scanner-header p {
+      font-size: 1.25rem;
+    }
+  
+    .scanner-body {
+      max-width: 600px;
+    }
+  
+    .scanning-status, .scanning-result {
+      font-size: 1.25rem;
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .scanner-header h1 {
+      font-size: 1.5rem;
+    }
+  
+    .scanner-header p {
+      font-size: 0.875rem;
+    }
+  
+    .scanning-status, .scanning-result {
+      font-size: 1rem;
+    }
+  }
+  
