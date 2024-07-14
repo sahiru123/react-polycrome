@@ -9,21 +9,21 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v2
-
+    
     - name: Use Node.js
       uses: actions/setup-node@v2
       with:
         node-version: '20' # or your preferred Node.js version
-
+    
     - name: Install dependencies
-      run: npm ci
-
+      run: npm ci --legacy-peer-deps
+    
 #    - name: Run tests
-   #   run: npm test
-
+#      run: npm test
+    
     - name: Build
       run: npm run build
-
+    
     - name: Deploy to VPS
       uses: appleboy/ssh-action@master
       with:
@@ -33,7 +33,7 @@ jobs:
         script: |
           cd /var/www/react-polycrome
           git pull origin main
-          npm ci
+          npm ci --legacy-peer-deps
           npm run build
           rm -rf /var/www/html/*
           cp -r build/* /var/www/html/
