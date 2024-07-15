@@ -1,18 +1,32 @@
-/* src/components/Dashboard.css */
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap');
+
+:root {
+  --primary-color: #2f3594;
+  --secondary-color: #34a853;
+  --background-color: #f0f2f5;
+  --card-background: #ffffff;
+  --text-color: #333333;
+  --text-light: #5f6368;
+}
+
+body {
+  font-family: 'Roboto', sans-serif;
+  background-color: var(--background-color);
+  color: var(--text-color);
+}
 
 .dashboard-container {
   display: flex;
   flex-direction: column;
   min-height: 100vh;
-  background-color: #f0f2f5;
   padding: 1rem;
 }
 
 .dashboard-card {
-  background-color: #ffffff;
-  border-radius: 8px;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-  padding: 1.5rem;
+  background-color: var(--card-background);
+  border-radius: 12px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  padding: 2rem;
   margin-bottom: 1.5rem;
 }
 
@@ -20,62 +34,135 @@
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  margin-bottom: 1.5rem;
+  margin-bottom: 2rem;
 }
-
 .logo-container {
   display: flex;
   align-items: center;
   margin-bottom: 1rem;
-  justify-content: flex-start;
 }
 
-.main-logo {
-  max-width: 100px;
-  height: auto;
-  margin-right: 0.5rem;
-}
-
-.second-logo {
-  max-width: 100px;
-  height: auto;
+.main-logo, .second-logo {
+  max-height: 50px;
+  width: auto;
+  margin-right: 1rem;
 }
 
 .dashboard-title {
-  color: #2f3594;
-  font-size: 1.8rem;
+  color: var(--primary-color);
+  font-size: 2rem;
+  font-weight: 700;
   margin: 0 0 1rem 0;
 }
 
 .user-info {
-  color: #5f6368;
-  font-size: 0.9rem;
+  color: var(--text-light);
+  font-size: 1rem;
+}
+
+.qr-instructions {
+  font-size: 1.1rem;
+  color: var(--text-light);
+  margin-bottom: 2rem;
+  text-align: center;
+  background-color: #e8f0fe;
+  padding: 1rem;
+  border-radius: 8px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+}
+
+.loyalty-points-card {
+  background: linear-gradient(135deg, var(--primary-color), #4b56c2);
+  border-radius: 12px;
+  padding: 2rem;
+  color: white;
+  display: flex;
+  align-items: center;
+  margin-bottom: 2rem;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+}
+
+.loyalty-points-icon {
+  font-size: 3rem;
+  margin-right: 1.5rem;
+}
+
+.loyalty-points-content h2 {
+  font-size: 1.2rem;
+  font-weight: 500;
+  margin: 0 0 0.5rem 0;
 }
 
 .total-points {
-  font-size: 1.3rem;
-  color: #2f3594;
-  margin-bottom: 1rem;
+  font-size: 2.5rem;
+  font-weight: 700;
+  margin: 0;
 }
 
-.success-message,
-.error-message {
-  padding: 0.8rem;
-  margin-bottom: 1rem;
-  border-radius: 4px;
-  font-size: 0.9rem;
+.action-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin-top: 1.5rem;
 }
 
-.success-message {
+.action-button {
+  background-color: var(--primary-color);
+  color: white;
+  border: none;
+  border-radius: 8px;
+  padding: 0.8rem 1.2rem;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-decoration: none;
+  text-align: center;
+  flex: 1 0 calc(50% - 0.5rem);
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.action-button:hover {
+  background-color: #1557b0;
+  transform: translateY(-2px);
+}
+
+.logout-button {
+  background-color: #d93025;
+}
+
+.logout-button:hover {
+  background-color: #b3261e;
+}
+
+.status-message {
+  padding: 1rem;
+  margin-bottom: 1.5rem;
+  border-radius: 8px;
+  font-size: 1rem;
+  position: relative;
+}
+
+.status-message.success {
   background-color: #e6f4ea;
-  border-left: 4px solid #34a853;
-  color: #34a853;
+  border-left: 4px solid var(--secondary-color);
+  color: var(--secondary-color);
 }
 
-.error-message {
+.status-message.error {
   background-color: #fef0f0;
   border-left: 4px solid #d93025;
   color: #d93025;
+}
+
+.close-button {
+  position: absolute;
+  right: 0.5rem;
+  top: 0.5rem;
+  background: none;
+  border: none;
+  font-size: 1.2rem;
+  cursor: pointer;
+  color: inherit;
 }
 
 .scanned-products {
@@ -194,49 +281,6 @@
   }
 }
 
-/* Add these styles to your Dashboard.css file */
-
-.manual-serial-form {
-  margin-top: 1.5rem;
-  padding: 1rem;
-  background-color: #f8f9fa;
-  border-radius: 4px;
-}
-
-.manual-serial-form h2 {
-  color: #2f3594;
-  margin-bottom: 1rem;
-  font-size: 1.2rem;
-}
-
-.manual-serial-form form {
-  display: flex;
-  gap: 0.5rem;
-}
-
-.manual-serial-form input[type="text"] {
-  flex-grow: 1;
-  padding: 0.5rem;
-  border: 1px solid #dadce0;
-  border-radius: 4px;
-  font-size: 0.9rem;
-}
-
-.manual-serial-form button {
-  background-color: #2f3594;
-  color: #ffffff;
-  border: none;
-  border-radius: 4px;
-  padding: 0.5rem 1rem;
-  font-size: 0.9rem;
-  cursor: pointer;
-  transition: background-color 0.3s;
-}
-
-.manual-serial-form button:hover {
-  background-color: #1557b0;
-}
-
 @media (min-width: 769px) {
   .dashboard-container {
     padding: 2rem;
@@ -274,12 +318,19 @@
     font-size: 1rem;
   }
 
-  .total-points {
-    font-size: 1.5rem;
+  .qr-instructions {
+    font-size: 1.1rem;
   }
 
-  .success-message,
-  .error-message {
+  .total-points {
+    font-size: 2rem;
+  }
+
+  .total-points span {
+    font-size: 2.5rem;
+  }
+
+  .status-message {
     padding: 1rem;
     font-size: 1rem;
   }
@@ -304,6 +355,57 @@
   .action-button {
     padding: 0.75rem 1rem;
     font-size: 1rem;
+    flex: 0 1 auto;
+  }
+}
+@media (min-width: 768px) {
+  .dashboard-container {
+    padding: 2rem;
+  }
+
+  .dashboard-card {
+    padding: 3rem;
+  }
+
+  .dashboard-header {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .logo-container {
+    margin-bottom: 0;
+  }
+
+  .main-logo, .second-logo {
+    max-height: 60px;
+  }
+
+  .dashboard-title {
+    font-size: 2.5rem;
+  }
+
+  .qr-instructions {
+    font-size: 1.2rem;
+  }
+
+  .loyalty-points-card {
+    padding: 3rem;
+  }
+
+  .loyalty-points-icon {
+    font-size: 4rem;
+  }
+
+  .loyalty-points-content h2 {
+    font-size: 1.5rem;
+  }
+
+  .total-points {
+    font-size: 3.5rem;
+  }
+
+  .action-button {
     flex: 0 1 auto;
   }
 }

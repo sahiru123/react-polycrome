@@ -2,13 +2,14 @@ import React, { useState, useEffect, useRef } from 'react';
 import { Link, useNavigate, useSearchParams } from 'react-router-dom';
 import { getDashboard, logout, processItemCode } from '../services/api';
 import './Dashboard.css';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faCoins } from '@fortawesome/free-solid-svg-icons';
 import polycromeLogo from '../assets/Polycrome_Logo_202x80@72x.png';
 import secondLogo from '../assets/polycrome second logo.jpg';
 
 const Dashboard = ({ setIsAuthenticated }) => {
   const [userData, setUserData] = useState(null);
   const [statusMessage, setStatusMessage] = useState({ type: null, text: '' });
-  const [manualSerialNumber, setManualSerialNumber] = useState('');
   const navigate = useNavigate();
   const [searchParams] = useSearchParams();
   const serialNumber = searchParams.get('serialnumber');
@@ -70,14 +71,6 @@ const Dashboard = ({ setIsAuthenticated }) => {
     }
   };
 
-  const handleManualSubmit = async (e) => {
-    e.preventDefault();
-    if (manualSerialNumber) {
-      await handleItemCode(manualSerialNumber);
-      setManualSerialNumber('');
-    }
-  };
-
   const clearStatusMessage = () => {
     setStatusMessage({ type: null, text: '' });
   };
@@ -99,6 +92,25 @@ const Dashboard = ({ setIsAuthenticated }) => {
           </div>
         </div>
 
+        {statusMessage.text && (
+          <div className={`status-message ${statusMessage.type}`}>
+            {statusMessage.text}
+            <button onClick={clearStatusMessage} className="close-button">&times;</button>
+          </div>
+        )}
+
+        <p className="qr-instructions">To receive loyalty points, simply use your mobile's QR Scan Feature in Camera to scan the Product QRs.</p>
+
+        <div className="loyalty-points-card">
+          <div className="loyalty-points-icon">
+            <FontAwesomeIcon icon={faCoins} />
+          </div>
+          <div className="loyalty-points-content">
+            <h2>Total Loyalty Points</h2>
+            <p className="total-points">{userData.totalPoints}</p>
+          </div>
+        </div>
+
         <div className="action-buttons">
           <Link to="/scan" className="action-button">Scan QR Code</Link>
           {userData.totalPoints >= 1000 && <Link to="/payout" className="action-button">Request Payout</Link>}
@@ -106,27 +118,6 @@ const Dashboard = ({ setIsAuthenticated }) => {
           <button onClick={handleLogout} className="action-button logout-button">Logout</button>
         </div>
 
-        {statusMessage.text && (
-          <div className={`status-message ${statusMessage.type}`}>
-            {statusMessage.text}
-            <button onClick={clearStatusMessage} className="close-button">&times;</button>
-          </div>
-        )}
-        <p className="total-points">Total Loyalty Points: {userData.totalPoints}</p>
-        
-        <div className="manual-serial-form">
-          <h2>Add Serial Number</h2>
-          <form onSubmit={handleManualSubmit}>
-            <input
-              type="text"
-              value={manualSerialNumber}
-              onChange={(e) => setManualSerialNumber(e.target.value)}
-              placeholder="Enter serial number"
-              required
-            />
-            <button type="submit">Redeem</button>
-          </form>
-        </div>
 
         <div className="scanned-products">
           <h2>Scanned Products</h2>

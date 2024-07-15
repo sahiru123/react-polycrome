@@ -4,6 +4,8 @@ import { login } from '../services/api';
 import './Login.css';
 import polycromeLogo from '../assets/Polycrome_Logo_202x80@72x.png';
 import secondLogo from '../assets/polycrome second logo.jpg';
+import dualLogo from '../assets/polycrome dual logo.png';
+
 
 function Login({ setIsAuthenticated }) {
   const [nicNumber, setNicNumber] = useState('');
@@ -59,9 +61,8 @@ function Login({ setIsAuthenticated }) {
   return (
     <div className="login-container">
       <div className="login-card">
-        <div className="logo-container">
-          <img src={polycromeLogo} alt="Polycrome Logo" className="logo polycrome-logo" />
-          <img src={secondLogo} alt="Second Logo" className="logo second-logo" />
+      <div className="logo-container">
+          <img src={dualLogo} alt="Polycrome Dual Logo" className="logo dual-logo" />
         </div>
         <h2 className="login-title">Login</h2>
         {error && <div className="error-message">{error}</div>}

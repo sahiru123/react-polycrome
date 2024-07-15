@@ -4,11 +4,14 @@ import { register } from '../services/api';
 import './Register.css';
 import polycromeLogo from '../assets/Polycrome_Logo_202x80@72x.png';
 import secondLogo from '../assets/polycrome second logo.jpg';
+import dualLogo from '../assets/polycrome dual logo.png';
+
 
 const Register = ({ setIsAuthenticated }) => {
   const [userData, setUserData] = useState({
     firstName: '',
     lastName: '',
+    city: '', 
     nicNumber: '',
     contactNo: '',
     password: '',
@@ -69,9 +72,8 @@ const Register = ({ setIsAuthenticated }) => {
   return (
     <div className="register-container">
       <div className="register-card">
-        <div className="logo-container">
-          <img src={polycromeLogo} alt="Polycrome Logo" className="logo polycrome-logo" />
-          <img src={secondLogo} alt="Second Logo" className="logo second-logo" />
+      <div className="logo-container">
+          <img src={dualLogo} alt="Polycrome Dual Logo" className="logo dual-logo" />
         </div>
         <h2 className="register-title">Register</h2>
         {error && <div className="error-message">{error}</div>}
@@ -84,6 +86,10 @@ const Register = ({ setIsAuthenticated }) => {
             <div className="form-group">
               <label htmlFor="lastName">Last Name</label>
               <input type="text" id="lastName" name="lastName" value={userData.lastName} onChange={handleChange} required />
+            </div>
+            <div className="form-group">
+              <label htmlFor="city">City</label>
+              <input type="text" id="city" name="city" value={userData.city} onChange={handleChange} required />
             </div>
             <div className="form-group">
               <label htmlFor="nicNumber">National Identity Card Number</label>

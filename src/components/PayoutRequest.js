@@ -13,7 +13,7 @@ const PayoutRequest = () => {
       await requestPayout();
       setIsSuccess(true);
       setMessage('Payout request submitted successfully!');
-      setTimeout(() => navigate('/dashboard'), 3000);
+      setTimeout(() => navigate('/dashboard'), 3001);
     } catch (error) {
       console.error('Failed to request payout:', error);
       setIsSuccess(false);

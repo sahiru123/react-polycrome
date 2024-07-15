@@ -1,0 +1,119 @@
+/* AdminDashboard.css */
+
+.admin-dashboard {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2rem;
+    font-family: Arial, sans-serif;
+    color: #333;
+  }
+  
+  .admin-dashboard h1 {
+    color: #2f3594;
+    font-size: 2.5rem;
+    margin-bottom: 2rem;
+    text-align: center;
+  }
+  
+  .admin-dashboard h2 {
+    color: #1557b0;
+    font-size: 1.8rem;
+    margin-top: 2rem;
+    margin-bottom: 1rem;
+  }
+  
+  .table-container {
+    overflow-x: auto;
+  }
+  
+  .user-table, .product-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 2rem;
+  }
+  
+  .user-table th, .user-table td,
+  .product-table th, .product-table td {
+    border: 1px solid #dadce0;
+    padding: 0.75rem;
+    text-align: left;
+  }
+  
+  .user-table th, .product-table th {
+    background-color: #f0f2f5;
+    font-weight: bold;
+  }
+  
+  .user-table tr:nth-child(even),
+  .product-table tr:nth-child(even) {
+    background-color: #f8f9fa;
+  }
+  
+  .product-form {
+    background-color: #f0f2f5;
+    padding: 1.5rem;
+    border-radius: 8px;
+    margin-bottom: 2rem;
+    display: flex;
+    gap: 1rem;
+  }
+  
+  .product-form input {
+    flex: 1;
+    padding: 0.75rem;
+    border: 1px solid #dadce0;
+    border-radius: 4px;
+    font-size: 1rem;
+  }
+  
+  .product-form button,
+  .delete-btn {
+    background-color: #2f3594;
+    color: white;
+    border: none;
+    padding: 0.75rem 1.5rem;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: background-color 0.3s;
+  }
+  
+  .product-form button:hover,
+  .delete-btn:hover {
+    background-color: #1557b0;
+  }
+  
+  .delete-btn {
+    background-color: #d93025;
+  }
+  
+  .delete-btn:hover {
+    background-color: #b3261e;
+  }
+  
+  .error-message {
+    background-color: #fef0f0;
+    border-left: 4px solid #d93025;
+    color: #d93025;
+    padding: 1rem;
+    margin-bottom: 1rem;
+    border-radius: 4px;
+  }
+  
+  @media (max-width: 768px) {
+    .admin-dashboard {
+      padding: 1rem;
+    }
+  
+    .admin-dashboard h1 {
+      font-size: 2rem;
+    }
+  
+    .admin-dashboard h2 {
+      font-size: 1.5rem;
+    }
+  
+    .product-form {
+      flex-direction: column;
+    }
+  }

@@ -1,7 +1,6 @@
 import axios from 'axios';
 
-const API_URL = process.env.API_URL;
-
+const API_URL = process.env.REACT_APP_API_URL;
 const api = axios.create({
   baseURL: API_URL,
   headers: {
@@ -81,9 +80,9 @@ export const logout = async () => {
 };
 
 // Admin endpoints
-export const getProducts = () => api.get('/admin/products');
-export const addProduct = (productData) => api.post('/admin/products', productData);
-export const deleteProduct = (productId) => api.delete(`/admin/products/${productId}`);
-export const getUsers = () => api.get('/admin/users');
+export const getProducts = () => api.get('/api/admin/products');
+export const addProduct = (productData) => api.post('/api/admin/products', productData);
+export const deleteProduct = (productId) => api.delete(`/api/admin/products/${productId}`);
+export const getUsers = () => api.get('/api/admin/users');
 
 export default api;

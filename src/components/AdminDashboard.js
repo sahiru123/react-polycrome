@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { getProducts, addProduct, deleteProduct, getUsers, getDashboard } from '../services/api';
+import './AdminDashboard.css';
 
 const AdminDashboard = () => {
   const [products, setProducts] = useState([]);
@@ -16,8 +17,8 @@ const AdminDashboard = () => {
         if (!response.data.isAdmin) {
           navigate('/dashboard');
         } else {
-          fetchProducts();
           fetchUsers();
+          fetchProducts();
         }
       } catch (error) {
         console.error('Error fetching dashboard:', error);
@@ -28,21 +29,21 @@ const AdminDashboard = () => {
     checkAdminStatus();
   }, [navigate]);
 
-  const fetchProducts = async () => {
-    try {
-      const response = await getProducts();
-      setProducts(response.data);
-    } catch (error) {
-      setError('Failed to fetch products');
-    }
-  };
-
   const fetchUsers = async () => {
     try {
       const response = await getUsers();
       setUsers(response.data);
     } catch (error) {
       setError('Failed to fetch users');
+    }
+  };
+
+  const fetchProducts = async () => {
+    try {
+      const response = await getProducts();
+      setProducts(response.data);
+    } catch (error) {
+      setError('Failed to fetch products');
     }
   };
 
@@ -66,14 +67,46 @@ const AdminDashboard = () => {
     }
   };
 
-  if (error) return <div>Error: {error}</div>;
+  if (error) return <div className="error-message">Error: {error}</div>;
 
   return (
-    <div>
+    <div className="admin-dashboard">
       <h1>Admin Dashboard</h1>
       
+      <h2>Users</h2>
+      <div className="table-container">
+        <table className="user-table">
+          <thead>
+            <tr>
+              <th>ID</th>
+              <th>First Name</th>
+              <th>Last Name</th>
+              <th>NIC Number</th>
+              <th>City</th>
+              <th>Contact No</th>
+              <th>Total Points</th>
+              <th>Admin</th>
+            </tr>
+          </thead>
+          <tbody>
+            {users.map((user) => (
+              <tr key={user.id}>
+                <td>{user.id}</td>
+                <td>{user.first_name}</td>
+                <td>{user.last_name}</td>
+                <td>{user.nic_number}</td>
+                <td>{user.city}</td>
+                <td>{user.contact_no}</td>
+                <td>{user.total_points}</td>
+                <td>{user.is_admin ? 'Yes' : 'No'}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+
       <h2>Products</h2>
-      <form onSubmit={handleAddProduct}>
+      <form onSubmit={handleAddProduct} className="product-form">
         <input
           type="text"
           value={newProduct.serialNumber}
@@ -90,23 +123,30 @@ const AdminDashboard = () => {
         />
         <button type="submit">Add Product</button>
       </form>
-      <ul>
-        {products.map((product) => (
-          <li key={product.id}>
-            {product.serial_number} - Points: {product.points}
-            <button onClick={() => handleDeleteProduct(product.id)}>Delete</button>
-          </li>
-        ))}
-      </ul>
-
-      <h2>Users</h2>
-      <ul>
-        {users.map((user) => (
-          <li key={user.id}>
-            {user.full_name} - NIC: {user.nic_number} - Points: {user.total_points} - Admin: {user.is_admin ? 'Yes' : 'No'}
-          </li>
-        ))}
-      </ul>
+      <div className="table-container">
+        <table className="product-table">
+          <thead>
+            <tr>
+              <th>ID</th>
+              <th>Serial Number</th>
+              <th>Points</th>
+              <th>Action</th>
+            </tr>
+          </thead>
+          <tbody>
+            {products.map((product) => (
+              <tr key={product.id}>
+                <td>{product.id}</td>
+                <td>{product.serial_number}</td>
+                <td>{product.points}</td>
+                <td>
+                  <button onClick={() => handleDeleteProduct(product.id)} className="delete-btn">Delete</button>
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
     </div>
   );
 };
