@@ -130,6 +130,11 @@ body {
   background-color: #d93025;
 }
 
+.dual-logo {
+  max-height: 60px;
+  width: auto;
+}
+
 .logout-button:hover {
   background-color: #b3261e;
 }
@@ -249,6 +254,10 @@ body {
 @media (max-width: 768px) {
   .product-table {
     border: 0;
+  }
+
+  .dual-logo {
+    max-height: 80px;
   }
   
   .product-table thead {
