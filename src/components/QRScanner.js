@@ -1,12 +1,14 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { QrReader } from 'react-qr-reader';
-import './QRScanner.css'; // Make sure to create this CSS file
+import { Scanner } from '@yudiel/react-qr-scanner';
+import './QRScanner.css';
 
 const QRScanner = () => {
   const [result, setResult] = useState('');
   const [scanning, setScanning] = useState(true);
+  const [detected, setDetected] = useState(false);
   const navigate = useNavigate();
+  const scannerRef = useRef(null);
 
   useEffect(() => {
     if (result) {
@@ -14,11 +16,10 @@ const QRScanner = () => {
     }
   }, [result]);
 
-  const handleScan = (data) => {
-    if (data) {
-      setResult(data);
-      setScanning(false);
-    }
+  const handleDecode = (result) => {
+    setResult(result);
+    setScanning(false);
+    setDetected(true);
   };
 
   const handleUrl = (url) => {
@@ -29,34 +30,23 @@ const QRScanner = () => {
     }
   };
 
-  const handleError = (err) => {
-    console.error(err);
-  };
-
   return (
     <div className="qr-scanner-container">
       <div className="scanner-header">
         <h1>Scan QR Code</h1>
         <p>Position the QR code within the frame to scan</p>
       </div>
-      <div className="scanner-body">
-        <div className="scanner-overlay">
+      <div className="scanner-body" ref={scannerRef}>
+        <div className={`scanner-overlay ${detected ? 'detected' : ''}`}>
           <div className="scan-region-highlight"></div>
           <div className="scanner-animation"></div>
         </div>
-        <QrReader
+        <Scanner
+          onResult={handleDecode}
+          onError={(error) => console.log(error?.message)}
           constraints={{ facingMode: 'environment' }}
-          delay={300}
-          onError={handleError}
-          onResult={(result, error) => {
-            if (result) {
-              handleScan(result?.text);
-            }
-            if (error) {
-              handleError(error);
-            }
-          }}
-          className="qr-reader"
+          scanDelay={500}
+          style={{ width: '100%', height: '100%' }}
         />
       </div>
       <div className="scanner-footer">
