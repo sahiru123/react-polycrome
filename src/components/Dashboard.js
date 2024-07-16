@@ -6,6 +6,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCoins } from '@fortawesome/free-solid-svg-icons';
 import polycromeLogo from '../assets/Polycrome_Logo_202x80@72x.png';
 import secondLogo from '../assets/polycrome second logo.jpg';
+import dualLogo from '../assets/polycrome dual logo.png';
 
 const Dashboard = ({ setIsAuthenticated }) => {
   const [userData, setUserData] = useState(null);
@@ -82,8 +83,7 @@ const Dashboard = ({ setIsAuthenticated }) => {
       <div className="dashboard-card">
         <div className="dashboard-header">
           <div className="logo-container">
-            <img src={polycromeLogo} alt="Polycrome Logo" className="main-logo" />
-            <img src={secondLogo} alt="Polycrome Second Logo" className="second-logo" />
+            <img src={dualLogo} alt="Polycrome Dual Logo" className="dual-logo" />
           </div>
           <h1 className="dashboard-title">Dashboard</h1>
           <div className="user-info">
@@ -99,7 +99,7 @@ const Dashboard = ({ setIsAuthenticated }) => {
           </div>
         )}
 
-        <p className="qr-instructions">To receive loyalty points, simply use your mobile's QR Scan Feature in Camera to scan the Product QRs.</p>
+        <p className="qr-instructions">Scan using <strong>Camera</strong> or <strong>QR Scanner</strong></p>
 
         <div className="loyalty-points-card">
           <div className="loyalty-points-icon">

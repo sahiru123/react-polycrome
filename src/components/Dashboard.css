@@ -13,6 +13,8 @@ body {
   font-family: 'Roboto', sans-serif;
   background-color: var(--background-color);
   color: var(--text-color);
+  margin: 0;
+  padding: 0;
 }
 
 .dashboard-container {
@@ -20,50 +22,59 @@ body {
   flex-direction: column;
   min-height: 100vh;
   padding: 1rem;
+  box-sizing: border-box;
 }
 
 .dashboard-card {
   background-color: var(--card-background);
   border-radius: 12px;
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
-  padding: 2rem;
+  padding: 1.5rem;
   margin-bottom: 1.5rem;
+  width: 100%;
+  box-sizing: border-box;
 }
 
 .dashboard-header {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  margin-bottom: 2rem;
+  margin-bottom: 1.5rem;
 }
+
 .logo-container {
   display: flex;
   align-items: center;
   margin-bottom: 1rem;
 }
 
+.dual-logo {
+  max-height: 60px;
+  width: auto;
+}
+
 .main-logo, .second-logo {
-  max-height: 50px;
+  height: 40px;
   width: auto;
   margin-right: 1rem;
 }
 
 .dashboard-title {
   color: var(--primary-color);
-  font-size: 2rem;
+  font-size: 1.8rem;
   font-weight: 700;
-  margin: 0 0 1rem 0;
+  margin: 0 0 0.5rem 0;
 }
 
 .user-info {
   color: var(--text-light);
-  font-size: 1rem;
+  font-size: 0.9rem;
 }
 
 .qr-instructions {
-  font-size: 1.1rem;
+  font-size: 1rem;
   color: var(--text-light);
-  margin-bottom: 2rem;
+  margin-bottom: 1.5rem;
   text-align: center;
   background-color: #e8f0fe;
   padding: 1rem;
@@ -74,27 +85,27 @@ body {
 .loyalty-points-card {
   background: linear-gradient(135deg, var(--primary-color), #4b56c2);
   border-radius: 12px;
-  padding: 2rem;
+  padding: 1.5rem;
   color: white;
   display: flex;
   align-items: center;
-  margin-bottom: 2rem;
+  margin-bottom: 1.5rem;
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
 }
 
 .loyalty-points-icon {
-  font-size: 3rem;
-  margin-right: 1.5rem;
+  font-size: 2.5rem;
+  margin-right: 1rem;
 }
 
 .loyalty-points-content h2 {
-  font-size: 1.2rem;
+  font-size: 1.1rem;
   font-weight: 500;
-  margin: 0 0 0.5rem 0;
+  margin: 0 0 0.3rem 0;
 }
 
 .total-points {
-  font-size: 2.5rem;
+  font-size: 2rem;
   font-weight: 700;
   margin: 0;
 }
@@ -102,7 +113,7 @@ body {
 .action-buttons {
   display: flex;
   flex-wrap: wrap;
-  gap: 1rem;
+  gap: 0.8rem;
   margin-top: 1.5rem;
 }
 
@@ -111,13 +122,13 @@ body {
   color: white;
   border: none;
   border-radius: 8px;
-  padding: 0.8rem 1.2rem;
-  font-size: 1rem;
+  padding: 0.8rem;
+  font-size: 0.9rem;
   cursor: pointer;
   transition: all 0.3s ease;
   text-decoration: none;
   text-align: center;
-  flex: 1 0 calc(50% - 0.5rem);
+  flex: 1 0 calc(50% - 0.4rem);
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
 }
 
@@ -138,7 +149,7 @@ body {
   padding: 1rem;
   margin-bottom: 1.5rem;
   border-radius: 8px;
-  font-size: 1rem;
+  font-size: 0.9rem;
   position: relative;
 }
 
@@ -178,11 +189,13 @@ body {
 .table-container {
   overflow-x: auto;
   -webkit-overflow-scrolling: touch;
+  margin: 0 -1rem;
 }
 
 .product-table {
   width: 100%;
-  border-collapse: collapse;
+  border-collapse: separate;
+  border-spacing: 0;
   font-size: 0.9rem;
 }
 
@@ -197,11 +210,9 @@ body {
   background-color: #e8f0fe;
   color: #2f3594;
   font-weight: 600;
-  white-space: nowrap;
-}
-
-.product-table tr:hover {
-  background-color: #f8f9fa;
+  position: sticky;
+  top: 0;
+  z-index: 10;
 }
 
 .no-products {
@@ -213,71 +224,108 @@ body {
   font-size: 0.9rem;
 }
 
-.action-buttons {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.8rem;
-  margin-top: 1.5rem;
-}
-
-.action-button {
-  background-color: #2f3594;
-  color: #ffffff;
-  border: none;
-  border-radius: 4px;
-  padding: 0.6rem 1rem;
-  font-size: 0.9rem;
-  cursor: pointer;
-  transition: background-color 0.3s;
-  text-decoration: none;
-  text-align: center;
-  flex: 1 0 calc(50% - 0.4rem);
-}
-
-.action-button:hover {
-  background-color: #1557b0;
-}
-
-.logout-button {
-  background-color: #d93025;
-}
-
-.logout-button:hover {
-  background-color: #b3261e;
-}
-
 @media (max-width: 768px) {
-  .product-table {
-    border: 0;
+  .dashboard-container {
+    padding: 0.5rem;
   }
-  
+
+  .dual-logo {
+    max-height: 80px;
+  }
+
+  .dashboard-card {
+    padding: 1rem;
+    border-radius: 8px;
+  }
+
+  .dashboard-header {
+    align-items: center;
+  }
+
+  .logo-container {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .main-logo, .second-logo {
+    height: 30px;
+    margin-bottom: 0.5rem;
+  }
+
+  .dashboard-title {
+    font-size: 1.5rem;
+    text-align: center;
+  }
+
+  .user-info {
+    text-align: center;
+  }
+
+  .qr-instructions {
+    font-size: 0.9rem;
+    padding: 0.8rem;
+  }
+
+  .loyalty-points-card {
+    flex-direction: column;
+    text-align: center;
+    padding: 1rem;
+  }
+
+  .loyalty-points-icon {
+    margin-right: 0;
+    margin-bottom: 0.5rem;
+  }
+
+  .action-buttons {
+    flex-direction: column;
+  }
+
+  .action-button {
+    flex: 1 0 100%;
+  }
+
+  .product-table {
+    display: block;
+  }
+
   .product-table thead {
     display: none;
   }
-  
-  .product-table tr {
-    margin-bottom: 10px;
-    display: block;
-    border-bottom: 2px solid #ddd;
-  }
-  
+
+  .product-table tbody,
+  .product-table tr,
   .product-table td {
     display: block;
+    width: 100%;
+    box-sizing: border-box;
+  }
+
+  .product-table tr {
+    margin-bottom: 1rem;
+    border: 1px solid #dadce0;
+    border-radius: 8px;
+    overflow: hidden;
+  }
+
+  .product-table td {
+    display: flex;
+    justify-content: space-between;
     text-align: right;
-    padding-left: 50%;
-    position: relative;
+    padding: 0.8rem;
     border-bottom: 1px solid #eee;
   }
-  
-  .product-table td:before {
+
+  .product-table td:last-child {
+    border-bottom: none;
+  }
+
+  .product-table td::before {
     content: attr(data-label);
-    position: absolute;
-    left: 6px;
-    width: 45%;
-    padding-right: 10px;
-    white-space: nowrap;
-    text-align: left;
     font-weight: bold;
+    text-align: left;
+    flex: 1;
+    padding-right: 0.5rem;
   }
 }
 
@@ -301,108 +349,16 @@ body {
   }
 
   .main-logo {
-    max-width: 150px;
-    margin-right: 1rem;
+    height: 50px;
   }
 
   .second-logo {
-    max-width: 75px;
+    height: 40px;
   }
 
   .dashboard-title {
     font-size: 2rem;
     margin: 0;
-  }
-
-  .user-info {
-    font-size: 1rem;
-  }
-
-  .qr-instructions {
-    font-size: 1.1rem;
-  }
-
-  .total-points {
-    font-size: 2rem;
-  }
-
-  .total-points span {
-    font-size: 2.5rem;
-  }
-
-  .status-message {
-    padding: 1rem;
-    font-size: 1rem;
-  }
-
-  .scanned-products h2 {
-    font-size: 1.5rem;
-  }
-
-  .product-table {
-    font-size: 1rem;
-  }
-
-  .product-table th,
-  .product-table td {
-    padding: 1rem;
-  }
-
-  .no-products {
-    font-size: 1rem;
-  }
-
-  .action-button {
-    padding: 0.75rem 1rem;
-    font-size: 1rem;
-    flex: 0 1 auto;
-  }
-}
-@media (min-width: 768px) {
-  .dashboard-container {
-    padding: 2rem;
-  }
-
-  .dashboard-card {
-    padding: 3rem;
-  }
-
-  .dashboard-header {
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
-  }
-
-  .logo-container {
-    margin-bottom: 0;
-  }
-
-  .main-logo, .second-logo {
-    max-height: 60px;
-  }
-
-  .dashboard-title {
-    font-size: 2.5rem;
-  }
-
-  .qr-instructions {
-    font-size: 1.2rem;
-  }
-
-  .loyalty-points-card {
-    padding: 3rem;
-  }
-
-  .loyalty-points-icon {
-    font-size: 4rem;
-  }
-
-  .loyalty-points-content h2 {
-    font-size: 1.5rem;
-  }
-
-  .total-points {
-    font-size: 3.5rem;
   }
 
   .action-button {
