@@ -71,6 +71,14 @@
   box-shadow: 0 0 0 9999px rgba(0, 0, 0, 0.5);
 }
 
+.scanner-overlay.detected .scanner-animation {
+  animation: none;
+  top: 50%;
+  height: 90%;
+  background: rgba(0, 255, 0, 0.2);
+  transition: all 0.5s ease;
+}
+
 .scanner-footer {
   margin-top: 20px;
   font-size: 18px;
@@ -83,4 +91,70 @@
 
 .scanning-result {
   color: #28a745;
+}
+
+/* Add these new keyframes for corner animations */
+@keyframes top-left-move {
+  0% { top: -5px; left: -5px; }
+  100% { top: 20px; left: 20px; }
+}
+
+@keyframes top-right-move {
+  0% { top: -5px; right: -5px; }
+  100% { top: 20px; right: 20px; }
+}
+
+@keyframes bottom-left-move {
+  0% { bottom: -5px; left: -5px; }
+  100% { bottom: 20px; left: 20px; }
+}
+
+@keyframes bottom-right-move {
+  0% { bottom: -5px; right: -5px; }
+  100% { bottom: 20px; right: 20px; }
+}
+
+/* Add corner elements */
+.scan-region-highlight::before,
+.scan-region-highlight::after,
+.scan-region-highlight span::before,
+.scan-region-highlight span::after {
+  content: '';
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  border-color: #00ff00;
+  border-style: solid;
+  animation-duration: 0.5s;
+  animation-timing-function: ease-out;
+  animation-iteration-count: infinite;
+  animation-direction: alternate;
+}
+
+.scan-region-highlight::before {
+  top: -5px;
+  left: -5px;
+  border-width: 2px 0 0 2px;
+  animation-name: top-left-move;
+}
+
+.scan-region-highlight::after {
+  top: -5px;
+  right: -5px;
+  border-width: 2px 2px 0 0;
+  animation-name: top-right-move;
+}
+
+.scan-region-highlight span::before {
+  bottom: -5px;
+  left: -5px;
+  border-width: 0 0 2px 2px;
+  animation-name: bottom-left-move;
+}
+
+.scan-region-highlight span::after {
+  bottom: -5px;
+  right: -5px;
+  border-width: 0 2px 2px 0;
+  animation-name: bottom-right-move;
 }
