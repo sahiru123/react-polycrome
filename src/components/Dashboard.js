@@ -82,7 +82,7 @@ const Dashboard = ({ setIsAuthenticated }) => {
     <div className="dashboard-container">
       <div className="dashboard-card">
         <div className="dashboard-header">
-        <div className="logo-container">
+          <div className="logo-container">
             <img src={dualLogo} alt="Polycrome Dual Logo" className="dual-logo" />
           </div>
           <h1 className="dashboard-title">Dashboard</h1>
@@ -99,7 +99,7 @@ const Dashboard = ({ setIsAuthenticated }) => {
           </div>
         )}
 
-        <p className="qr-instructions">To receive loyalty points, simply use your mobile's QR Scan Feature in Camera to scan the Product QRs.</p>
+        <p className="qr-instructions">Scan using <strong>Camera</strong> or <strong>QR Scanner</strong></p>
 
         <div className="loyalty-points-card">
           <div className="loyalty-points-icon">
