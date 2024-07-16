@@ -17,9 +17,12 @@ const QRScanner = () => {
   }, [result]);
 
   const handleDecode = (result) => {
-    setResult(result);
-    setScanning(false);
-    setDetected(true);
+    if (result) {
+      console.log("QR Code detected:", result);
+      setResult(result);
+      setScanning(false);
+      setDetected(true);
+    }
   };
 
   const handleUrl = (url) => {
@@ -42,10 +45,14 @@ const QRScanner = () => {
           <div className="scanner-animation"></div>
         </div>
         <Scanner
-          onResult={handleDecode}
-          onError={(error) => console.log(error?.message)}
+          onResult={(result) => {
+            if (result) {
+              handleDecode(result.text);
+            }
+          }}
+          onError={(error) => console.error(error)}
           constraints={{ facingMode: 'environment' }}
-          scanDelay={500}
+          scanDelay={300}
           style={{ width: '100%', height: '100%' }}
         />
       </div>
